@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity } from 'react-native';
+import { View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Colours, FontSize } from '../constants/theme';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const Input = ({
   placeholder,
@@ -9,8 +12,6 @@ const Input = ({
   onChangeText,
   secureTextEntry = false,
   style = {},
-  icon,
-  onIconPress,
 }) => {
   const [isSecure, setIsSecure] = useState(secureTextEntry);
 
@@ -21,12 +22,12 @@ const Input = ({
           flexDirection: 'row',
           alignItems: 'center',
           borderWidth: 1,
-          borderColor: '#ccc',
-          borderRadius: 8,
+          borderColor: Colours.themePink,
+          borderRadius: 15,
           paddingHorizontal: 10,
-          height: 45,
-          backgroundColor: Colours.white,
-          margin: '2%',
+          height: windowHeight/ 18,
+          backgroundColor: Colours.darkWhite,
+          marginVertical: '2%',
         },
         style,
       ]}
@@ -36,15 +37,15 @@ const Input = ({
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
-        style={{ flex: 1, fontSize: FontSize.s16 }}
+        style={{ flex: 1, fontSize: FontSize.s16, color: Colours.black }}
       />
       
       {/* İkon varsa göster */}
-      {icon && (
-        <TouchableOpacity onPress={onIconPress || (() => setIsSecure(!isSecure))}>
+      {secureTextEntry === true  && (
+        <TouchableOpacity onPress={() => setIsSecure(!isSecure)}>
           <MaterialIcons
-            name={icon || (isSecure ? 'visibility-off' : 'visibility')}
-            size={24}
+            name={isSecure ? 'visibility-off' : 'visibility'}
+            size={23}
             color="gray"
           />
         </TouchableOpacity>

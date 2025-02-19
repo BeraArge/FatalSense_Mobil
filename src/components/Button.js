@@ -1,27 +1,45 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
+import { Colours, FontSize } from "../constants/theme";
 
 const Button = ({ title, onPress, style = {}, textStyle = {} }) => {
   return (
-    <TouchableOpacity style={[styles.button, style]} onPress={onPress} activeOpacity={0.8}>
+    <TouchableOpacity
+      style={[styles.button, style]}
+      onPress={onPress}
+      activeOpacity={0.8}
+    >
       <Text style={[styles.buttonText, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };
 
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#3498db', // Varsayılan buton rengi
+    backgroundColor: Colours.themeGreen,
     paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    width: windowWidth / 1.5,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   buttonText: {
-    color: '#fff', // Varsayılan yazı rengi
-    fontSize: 16,
-    fontWeight: 'bold',
+    color: Colours.white,
+    fontSize: FontSize.s16,
+    fontWeight: "bold",
   },
 });
 

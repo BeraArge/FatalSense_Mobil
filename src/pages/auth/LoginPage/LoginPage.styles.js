@@ -11,10 +11,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   innerContainer: {
-    width: windowWidth / 1.2,
-    height: windowHeight / 1.8,
+    width: windowWidth / 1.15,
+    height: windowHeight / 1.6,
     justifyContent: 'space-around',
-    backgroundColor: Colours.darkWhite,
+    paddingVertical: '5%',
+    paddingHorizontal: '3%',
+    backgroundColor: Colours.white,
     borderWidth: 1,
     borderColor: Colours.lightOrange,
     borderRadius: 15,
@@ -32,9 +34,28 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     //backgroundColor: 'red',
+    marginHorizontal: '3%',
   },
   buttonContainer: {
     //backgroundColor: 'blue'
+  },
+  headerText: {
+    fontSize: FontSize.s24,
+    fontWeight: "bold",
+    color: Colours.darkGreen,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  passwordContainer: {
+
+  },
+  passwordText: {
+    fontSize: FontSize.s14,
+    fontWeight: "bold",
+    color: Colours.darkGreen,
+    margin: '2%',
+    textAlign: 'right',
+    textDecorationLine: 'underline'
   },
 });
 

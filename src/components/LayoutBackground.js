@@ -22,7 +22,7 @@ const LayoutBackground = ({children, backgroundOption = 1, title, backButton}) =
       backgroundSource = require('../../assets/appAssets/background.jpg');
       break;
     case 3:
-      backgroundSource = require('../../assets/appAssets/background.jpg');
+      backgroundSource = require('../../assets/appAssets/backgroundGeneral.jpg');
       break;
     default:
       backgroundSource = require('../../assets/appAssets/background.jpg');
