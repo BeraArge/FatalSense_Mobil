@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 import { Colours, FontSize } from "../../constants/theme";
 
 const windowWidth = Dimensions.get("window").width;
@@ -89,6 +89,65 @@ const styles = StyleSheet.create({
     fontSize: FontSize.s14,
     fontWeight: 600,
     color: Colours.darkDarkGreen,
+  },
+
+  // BOTTOMSHEET STYLE
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Arka planın yarı saydam olması
+  },
+  modalContent: {
+    flex: 1,
+    marginTop: Platform.OS === "ios" ? "11%" : "11%",
+    width: windowWidth/ 1,
+    backgroundColor: Colours.white,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    padding: 20,
+  },
+  bottomSheetContent: {
+    marginVertical: '5%',
+  },
+  sheetTitle: {
+    padding: 10,
+    alignSelf: 'center',
+    color: Colours.themeBlue,
+    fontWeight: 'bold',
+    fontSize: FontSize.s20,
+  },
+  weekImage: {
+    width: '60%',
+    height: '20%',
+    alignSelf: 'center',
+  },
+  section: {
+    marginVertical: '3%',
+  },
+  sectionTitle: {
+    paddingVertical: 10,
+    fontWeight: 'bold',
+    fontSize: FontSize.s18,
+    color: Colours.themeOrange,
+  },
+  coverLetter: {
+    fontWeight: 800,
+    color: Colours.black,
+    fontSize: FontSize.s14,
+    lineHeight: 20,
+    paddingBottom: 15,
+  },
+  listContent: {
+    lineHeight: 20,
+    fontSize: FontSize.s14,
+    fontWeight: 500,
+    color: Colours.darkGray,
+  },
+  tableImage: {
+    width: windowWidth/ 1.11,
+    height: windowHeight/ 2.5,
+    alignSelf: 'center',
   },
 });
 

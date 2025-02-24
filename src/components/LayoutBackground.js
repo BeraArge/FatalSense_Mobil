@@ -25,7 +25,7 @@ const LayoutBackground = ({children, backgroundOption = 1, title, backButton}) =
       backgroundSource = require('../../assets/appAssets/backgroundGeneral.jpg');
       break;
     default:
-      backgroundSource = require('../../assets/appAssets/background.jpg');
+      backgroundSource = require('../../assets/appAssets/formBackground.png');
       break;
   }
 
@@ -42,7 +42,7 @@ const LayoutBackground = ({children, backgroundOption = 1, title, backButton}) =
                 width: '100%',
                 justifyContent: 'flex-end',
                 alignItems: 'center',
-                zIndex: 999,
+                zIndex: 9999,
               }}>
               {backButton && <BackButton />}
               <Text

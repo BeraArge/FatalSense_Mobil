@@ -4,6 +4,8 @@ export const Colours = {
     themeGray: "#6C757D",
     themeBlue: "#324452",
     themeOrange: "orange",
+    themeRed: "#ac0527",
+    themePurple: "#943276",
     lightOrange: "#FEF3E2",
     black: "black",
     gray: "gray",
@@ -11,12 +13,15 @@ export const Colours = {
     darkWhite: "#fafafa",
     darkGreen: "#435244",
     darkDarkGreen: "#2d362d",
+    darkGray: "#101112",
+    darkPink: "#915c5c",
 };
 
 export const FontSize = {
     s10: 10,
     s12: 12,
     s14: 14,
+    s15: 15,
     s16: 16,
     s18: 18,
     s20: 20,

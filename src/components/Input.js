@@ -11,6 +11,7 @@ const Input = ({
   value,
   onChangeText,
   secureTextEntry = false,
+  editable = true,
   style = {},
 }) => {
   const [isSecure, setIsSecure] = useState(secureTextEntry);
@@ -25,7 +26,7 @@ const Input = ({
           borderColor: Colours.themePink,
           borderRadius: 15,
           paddingHorizontal: 10,
-          height: windowHeight/ 18,
+          height: windowHeight/ 20,
           backgroundColor: Colours.darkWhite,
           marginVertical: '2%',
         },
@@ -37,6 +38,7 @@ const Input = ({
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
+        editable={editable}
         style={{ flex: 1, fontSize: FontSize.s16, color: Colours.black }}
       />
       
