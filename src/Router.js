@@ -6,17 +6,19 @@ import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/auth/LoginPage/LoginPage';
 import FetalDevPage from './pages/FetalDevPage/FetalDevPage';
 import PersonalInfoForm from './pages/PersonalInfoForm/PersonalInfoForm';
+import FetalCounter from './pages/FetalCounter/FetalCounter';
 
 const Stack = createStackNavigator();
 
 export default function Router() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="PersonalInfoForm">
+      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="HomePage">
         <Stack.Screen name="HomePage" component={HomePage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="FetalDevPage" component={FetalDevPage} />
         <Stack.Screen name="PersonalInfoForm" component={PersonalInfoForm} />
+        <Stack.Screen name="FetalCounter" component={FetalCounter} />
       </Stack.Navigator>
     </NavigationContainer>
   );

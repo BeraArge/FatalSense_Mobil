@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     color: Colours.darkGreen,
     alignSelf: "center",
     marginBottom: 10,
+    flexShrink: 1,
   },
   listItem: {
     flexDirection: "row",
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
     fontSize: FontSize.s14,
     fontWeight: 600,
     color: Colours.darkDarkGreen,
+    flexShrink: 1,
   },
 
   // BOTTOMSHEET STYLE
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: FontSize.s18,
     color: Colours.themeOrange,
+    flexShrink: 1,
   },
   coverLetter: {
     fontWeight: 800,
@@ -137,6 +140,7 @@ const styles = StyleSheet.create({
     fontSize: FontSize.s14,
     lineHeight: 20,
     paddingBottom: 15,
+    flexShrink: 1,
   },
   listContent: {
     lineHeight: 20,

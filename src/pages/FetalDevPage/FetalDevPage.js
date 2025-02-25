@@ -17,6 +17,7 @@ import LayoutBackground from "../../components/LayoutBackground";
 import LogoArea from "../../components/LogoArea";
 import fetalDevelopmentData from "../../utils/fetalDevelopmentData";
 import { FontSize, Colours } from "../../constants/theme";
+import { MaterialIcons } from '@expo/vector-icons';
 
 const FetalDevPage = () => {
   const [selectedWeek, setSelectedWeek] = useState(null);

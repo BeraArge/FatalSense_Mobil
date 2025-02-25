@@ -17,7 +17,7 @@ const HomePage = ({navigation}) => {
         <View style={styles.innerContainer}>
           <View style={styles.headerContainer}>
             <Text style={[styles.headerText, { fontStyle: "italic" }]}>
-              Hoşgeldiniz Özlem Miğfer
+              {`Hoşgeldiniz Özlem Miğfer`}
             </Text>
           </View>
 
@@ -28,14 +28,14 @@ const HomePage = ({navigation}) => {
                   style={styles.menuIcon}
                   source={require("../../../assets/appAssets/menuIcons/1.png")}
                 />
-                <Text style={styles.titleText}>Fetal Gelişim</Text>
+                <Text style={styles.titleText}>{'Fetal Gelişim'}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.menuButton}>
                 <Image
                   style={[styles.menuIcon, { width: 70, height: 130 }]}
                   source={require("../../../assets/appAssets/menuIcons/2.png")}
                 />
-                <Text style={styles.titleText}>Bebek Bakımı</Text>
+                <Text style={styles.titleText}>{'Bebek Bakımı'}</Text>
               </TouchableOpacity>
             </View>
 
@@ -49,14 +49,14 @@ const HomePage = ({navigation}) => {
                   style={[styles.menuIcon, { width: 90, height: 130 }]}
                   source={require("../../../assets/appAssets/menuIcons/3.png")}
                 />
-                <Text style={styles.titleText}>Doğum Sonrası Dönem</Text>
+                <Text style={styles.titleText}>{'Doğum Sonrası Dönem'}</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.menuButton}>
+              <TouchableOpacity style={styles.menuButton}  onPress={() => navigation.navigate("FetalCounter")}>
                 <Image
                   style={[styles.menuIcon, { width: 95, height: 110 }]}
                   source={require("../../../assets/appAssets/menuIcons/4.1.png")}
                 />
-                <Text style={styles.titleText}>Fetal Hareket Takibi</Text>
+                <Text style={styles.titleText}>{'Fetal Hareket Takibi'}</Text>
               </TouchableOpacity>
             </View>
           </View>

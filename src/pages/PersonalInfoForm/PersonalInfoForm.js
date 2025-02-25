@@ -191,6 +191,7 @@ const PersonalInfoForm = ({ navigation }) => {
             visible={showAlert}
             onClose={() => setShowAlert(false)}
             message={"Lütfen tüm alanları doldurun!"}
+            buttonText={'Tamam'}
           />
         </View>
       </SafeAreaView>

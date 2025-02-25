@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import { Colours, FontSize } from "../constants/theme";
 
-const CustomAlert = ({ visible, onClose, message }) => {
+const CustomAlert = ({ visible, onClose, message, buttonText }) => {
   return (
     <Modal
       transparent={true}
@@ -14,7 +14,7 @@ const CustomAlert = ({ visible, onClose, message }) => {
         <View style={styles.alertContainer}>
           <Text style={styles.message}>{message}</Text>
           <TouchableOpacity style={styles.button} onPress={onClose}>
-            <Text style={styles.buttonText}>Tamam</Text>
+            <Text style={styles.buttonText}>{buttonText}</Text>
           </TouchableOpacity>
         </View>
       </View>
