@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -16,8 +16,15 @@ import { Colours, FontSize } from "../../constants/theme";
 import Button from "../../components/Button";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import CustomAlert from "../../components/CustomAlert";
+import { useDispatch, useSelector } from "react-redux";
+import { personalForm } from "../../redux/slices/personalFormSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const PersonalInfoForm = ({ navigation }) => {
+const PersonalInfoForm = ({ navigation, route }) => {
+  const dispatch = useDispatch();
+  const { data, error } = useSelector((state) => state.personal);
+  const { userId } = route.params || {};
+
   const [nameSurname, setNameSurname] = useState("");
   const [age, setAge] = useState("");
   const [weight, setWeight] = useState("");
@@ -28,8 +35,17 @@ const PersonalInfoForm = ({ navigation }) => {
   const [ultrasonPregnancyWeek, setUltrasonPregnancyWeek] = useState("");
   const [showPicker, setShowPicker] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
-  // datettimepicker gösterme ve gebelik haftası hesaplama
+  useEffect(() => {
+    if (data?.isSuccess === true) {
+      navigation.navigate("HomePage", {
+        ultrasonPregnancyWeek: ultrasonPregnancyWeek,
+      });
+    }
+  }, [data]);
+
+  // datetimepicker gösterme ve gebelik haftası hesaplama
   const onChange = (event, selectedDate) => {
     if (selectedDate) {
       setPeriodDate(selectedDate);
@@ -41,6 +57,7 @@ const PersonalInfoForm = ({ navigation }) => {
     setShowPicker(false);
   };
 
+  //bki hesaplama
   const calculateBKI = (w, h) => {
     const weightNum = parseFloat(w);
     const heightNum = parseFloat(h) / 100;
@@ -53,13 +70,60 @@ const PersonalInfoForm = ({ navigation }) => {
     }
   };
 
-  const handleSend = () => {
-    if (!nameSurname || !age || !weight || !height || !periodDate) {
+  // verileri gönderme
+  const handleSend = async () => {
+    if (
+      !nameSurname ||
+      !age ||
+      !weight ||
+      !height ||
+      !periodDate ||
+      !pregnancyWeek ||
+      !ultrasonPregnancyWeek
+    ) {
+      setAlertMessage("Lütfen gerekli yerleri doldurunuz!");
       setShowAlert(true);
       return;
     }
-    navigation.navigate("HomePage");
+    if (
+      userId &&
+      nameSurname &&
+      age &&
+      weight &&
+      height &&
+      periodDate &&
+      pregnancyWeek &&
+      ultrasonPregnancyWeek
+    ) {
+      try {
+        await AsyncStorage.setItem(
+          "userUltrasonPregnancyWeek",
+          ultrasonPregnancyWeek ? ultrasonPregnancyWeek : ""
+        );
+        const changeDate = new Date(periodDate);
+        const formattedDate = changeDate
+          .toISOString()
+          .split("T")[0]
+          .replace(/-/g, ".");
+
+        dispatch(
+          personalForm({
+            id: userId,
+            yas: age,
+            boy: height,
+            bKI: bki,
+            sonAdet: formattedDate,
+            aHaftalik: pregnancyWeek.toString(),
+            uHaftalik: ultrasonPregnancyWeek,
+          })
+        );
+      } catch (error) {
+        console.log("PersonalInfo Form Page Hata oluştu:", error);
+      }
+    }
   };
+
+  //console.log("PERSONALFORM PAGE USER: ", data?.data, "---------:", typeof height);
 
   return (
     <LayoutBackground backgroundOption={4}>
@@ -71,6 +135,7 @@ const PersonalInfoForm = ({ navigation }) => {
               <Input
                 placeholder={"............."}
                 value={nameSurname}
+                keyboardType={"default"}
                 onChangeText={setNameSurname}
               />
             </View>
@@ -79,6 +144,7 @@ const PersonalInfoForm = ({ navigation }) => {
               <Input
                 placeholder={"............."}
                 value={age}
+                keyboardType={"numeric"}
                 onChangeText={setAge}
               />
             </View>
@@ -87,6 +153,7 @@ const PersonalInfoForm = ({ navigation }) => {
               <Input
                 placeholder={"............. kg"}
                 value={weight}
+                keyboardType={"numeric"}
                 onChangeText={(value) => {
                   setWeight(value);
                   calculateBKI(value, height);
@@ -98,6 +165,7 @@ const PersonalInfoForm = ({ navigation }) => {
               <Input
                 placeholder={"............. cm"}
                 value={height}
+                keyboardType={"numeric"}
                 onChangeText={(value) => {
                   setHeight(value);
                   calculateBKI(weight, value);
@@ -152,18 +220,20 @@ const PersonalInfoForm = ({ navigation }) => {
               <View
                 style={[styles.questionContainer, { paddingVertical: "1%" }]}
               >
-                <Text style={[styles.text, { color: Colours.darkGray }]}>
-                  {`Bebeğiniz, son adet tarihine göre `}
-                  <Text
-                    style={{
-                      color: Colours.themeRed,
-                      fontSize: FontSize.s18,
-                    }}
-                  >
-                    {` ${pregnancyWeek}`}
+                {pregnancyWeek ? (
+                  <Text style={[styles.text, { color: Colours.darkGray }]}>
+                    {`Bebeğiniz, son adet tarihine göre `}
+                    <Text
+                      style={{
+                        color: Colours.themeRed,
+                        fontSize: FontSize.s18,
+                      }}
+                    >
+                      {` ${pregnancyWeek}`}
+                    </Text>
+                    {` haftalıktır.`}
                   </Text>
-                  {` haftalıktır.`}
-                </Text>
+                ) : null}
               </View>
             ) : null}
 
@@ -174,6 +244,7 @@ const PersonalInfoForm = ({ navigation }) => {
               <Input
                 placeholder={"............. hafta"}
                 value={ultrasonPregnancyWeek}
+                keyboardType={"numeric"}
                 onChangeText={setUltrasonPregnancyWeek}
               />
             </View>
@@ -190,8 +261,8 @@ const PersonalInfoForm = ({ navigation }) => {
           <CustomAlert
             visible={showAlert}
             onClose={() => setShowAlert(false)}
-            message={"Lütfen tüm alanları doldurun!"}
-            buttonText={'Tamam'}
+            message={alertMessage}
+            buttonText={"Tamam"}
           />
         </View>
       </SafeAreaView>

@@ -12,6 +12,7 @@ const Input = ({
   onChangeText,
   secureTextEntry = false,
   editable = true,
+  keyboardType,
   style = {},
 }) => {
   const [isSecure, setIsSecure] = useState(secureTextEntry);
@@ -39,6 +40,7 @@ const Input = ({
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
         editable={editable}
+        keyboardType={keyboardType}
         style={{ flex: 1, fontSize: FontSize.s16, color: Colours.black }}
       />
       

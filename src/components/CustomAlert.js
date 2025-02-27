@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingVertical: 35,
     paddingHorizontal: 20,
     borderRadius: 15,
-    width: '80%',
+    width: "80%",
     alignItems: "center",
   },
   message: {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     color: Colours.darkGray,
     marginBottom: 20,
     textAlign: "center",
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colours.darkGray,
     textAlign: "center",
   },

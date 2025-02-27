@@ -2,21 +2,20 @@ import React, { useRef, useState, useEffect } from "react";
 import {
   View,
   Text,
-  SafeAreaView,
   TouchableOpacity,
-  Image,
   ScrollView,
   Platform,
-  FlatList,
-  TouchableWithoutFeedback,
-  Modal,
-  Keyboard,
 } from "react-native";
 import styles from "./FetalCounter.styles";
 import LayoutBackground from "../../components/LayoutBackground";
 import CustomAlert from "../../components/CustomAlert";
+import { useSelector, useDispatch } from "react-redux";
+import {  getFetalInfo, addFetal } from "../../redux/slices/fetalSlice";
 
 const FetalCounter = () => {
+  const dispatch = useDispatch();
+  const { fetalInfoData, fetalAddedData, error } = useSelector((state) => state.fetal);
+
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [fetalCount, setFetalCount] = useState(0);
@@ -31,7 +30,16 @@ const FetalCounter = () => {
 
   // Fetal hareket sayısı arttırma
   const handleCounter = () => {
+    dispatch(addFetal());
     setFetalCount((count) => count + 1);
+  };
+
+  //tüm geçmiş sonuçları görme ekranını gösterme
+  const handleShowResult = () => {
+    dispatch(getFetalInfo());
+    setShowResult(true);
+
+    console.log("FETALCOUNTER PAGE FETAL INFO::::::",fetalInfoData);
   };
 
   return (
@@ -84,7 +92,7 @@ const FetalCounter = () => {
               </View>
 
               <View style={styles.footerContainer}>
-                <TouchableOpacity style={styles.allResultButton} onPress={() => setShowResult(true)}>
+                <TouchableOpacity style={styles.allResultButton} onPress={handleShowResult}>
                   <Text style={[styles.timerButtonText]}>
                     {"Tüm Sonuçları Gör"}
                   </Text>
@@ -102,7 +110,7 @@ const FetalCounter = () => {
         /> */}
 
         <CustomAlert
-          message={`${fetalCount}`}
+          message={``}
           buttonText={"Kapat"}
           visible={showResult}
           onClose={() => setShowResult(false)}
