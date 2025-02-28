@@ -5,22 +5,28 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
+  Modal,
+  TouchableWithoutFeedback,
 } from "react-native";
 import styles from "./FetalCounter.styles";
 import LayoutBackground from "../../components/LayoutBackground";
 import CustomAlert from "../../components/CustomAlert";
+// import CustomBarChart from "../../components/CustomBarChart";
 import { useSelector, useDispatch } from "react-redux";
-import {  getFetalInfo, addFetal } from "../../redux/slices/fetalSlice";
+import { getFetalInfo, addFetal } from "../../redux/slices/fetalSlice";
 
-const FetalCounter = () => {
+const FetalCounter = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { fetalInfoData, fetalAddedData, error } = useSelector((state) => state.fetal);
+  const { fetalInfoData, fetalAddedData, error } = useSelector(
+    (state) => state.fetal
+  );
 
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [fetalCount, setFetalCount] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [showChart, setShowChart] = useState(false);
 
   // Süre - sayaç sıfırlama
   const handleResetTimer = () => {
@@ -36,10 +42,10 @@ const FetalCounter = () => {
 
   //tüm geçmiş sonuçları görme ekranını gösterme
   const handleShowResult = () => {
-    dispatch(getFetalInfo());
-    setShowResult(true);
-
-    console.log("FETALCOUNTER PAGE FETAL INFO::::::",fetalInfoData);
+    //dispatch(getFetalInfo());
+    setShowChart(true);
+    navigation.navigate("CustomBarChart");
+    console.log("FETALCOUNTER PAGE FETAL INFO::::::", fetalInfoData);
   };
 
   return (
@@ -78,7 +84,7 @@ const FetalCounter = () => {
                 <View style={styles.timerButtonContainer}>
                   <TouchableOpacity
                     style={styles.timerButton}
-                    onPress={isRunning ? handleStopTimer : handleResetTimer}
+                    onPress={handleResetTimer}
                   >
                     <Text style={styles.timerButtonText}>
                       {"Sayacı Sıfırla"}
@@ -87,12 +93,17 @@ const FetalCounter = () => {
                 </View>
 
                 <View style={styles.resultContainer}>
-                  <Text style={styles.resultText}>{`Fetal Hareket: ${fetalCount}`}</Text>
+                  <Text
+                    style={styles.resultText}
+                  >{`Fetal Hareket: ${fetalCount}`}</Text>
                 </View>
               </View>
 
               <View style={styles.footerContainer}>
-                <TouchableOpacity style={styles.allResultButton} onPress={handleShowResult}>
+                <TouchableOpacity
+                  style={styles.allResultButton}
+                  onPress={handleShowResult}
+                >
                   <Text style={[styles.timerButtonText]}>
                     {"Tüm Sonuçları Gör"}
                   </Text>
@@ -101,13 +112,6 @@ const FetalCounter = () => {
             </View>
           </View>
         </ScrollView>
-
-        {/* <CustomAlert
-          message={"Lütfen önce süreyi başlatınız!"}
-          buttonText={"Tamam"}
-          visible={showAlert}
-          onClose={() => setShowAlert(false)}
-        /> */}
 
         <CustomAlert
           message={``}

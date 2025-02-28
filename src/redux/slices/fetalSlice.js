@@ -28,7 +28,7 @@ export const getFetalInfo = createAsyncThunk(
       );
 
       const userData = response.data;
-      console.log("GET_FETAL_INFO SLICE RESPONSE: ", userData);
+      console.log("GET_FETAL_INFO SLICE RESPONSE: ", userData?.data);
 
       return response.data;
     } catch (error) {

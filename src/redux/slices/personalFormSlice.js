@@ -8,6 +8,7 @@ export const personalForm = createAsyncThunk(
   async (personalData, { rejectWithValue }) => {
     console.log("PERSONAL_FORM SLICE USER CREDENTIALS: ", personalData);
     const token = await AsyncStorage.getItem('userToken');
+    
     try {
       const response = await axios.post(API_URLS.PERSONAL_FORM, personalData, {
         headers: {
