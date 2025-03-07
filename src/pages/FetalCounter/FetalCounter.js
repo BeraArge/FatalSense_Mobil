@@ -42,7 +42,7 @@ const FetalCounter = ({ navigation }) => {
 
   //tüm geçmiş sonuçları görme ekranını gösterme
   const handleShowResult = () => {
-    //dispatch(getFetalInfo());
+    dispatch(getFetalInfo());
     setShowChart(true);
     navigation.navigate("CustomBarChart");
     console.log("FETALCOUNTER PAGE FETAL INFO::::::", fetalInfoData);

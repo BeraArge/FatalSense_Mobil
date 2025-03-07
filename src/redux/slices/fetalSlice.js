@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const initialState = {
   fetalInfoData: null,
   error: null,
+  loading: false,
   fetalAddedData: null,
 };
 
@@ -27,8 +28,8 @@ export const getFetalInfo = createAsyncThunk(
         }
       );
 
-      const userData = response.data;
-      console.log("GET_FETAL_INFO SLICE RESPONSE: ", userData?.data);
+     // const userData = response.data;
+    //  console.log("GET_FETAL_INFO SLICE RESPONSE: ", userData?.data);
 
       return response.data;
     } catch (error) {
@@ -81,12 +82,15 @@ const fetalSlice = createSlice({
     builder
       .addCase(getFetalInfo.pending, (state) => {
         state.error = null;
+        state.loading = true;
       })
       .addCase(getFetalInfo.fulfilled, (state, action) => {
         state.fetalInfoData = action.payload;
+        state.loading = false;
       })
       .addCase(getFetalInfo.rejected, (state, action) => {
         state.error = action.payload;
+        state.loading = false;
       })
       .addCase(addFetal.pending, (state) => {
         state.error = null;

@@ -21,7 +21,7 @@ export default function Router() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName="FetalCounter"
+          initialRouteName="LoginPage"
         >
           <Stack.Screen name="HomePage" component={HomePage} />
           <Stack.Screen name="LoginPage" component={LoginPage} />
