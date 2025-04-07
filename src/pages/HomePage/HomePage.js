@@ -61,7 +61,7 @@ const HomePage = ({ navigation, route }) => {
                 />
                 <Text style={styles.titleText}>{"Fetal Gelişim"}</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.menuButton}>
+              <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("BabyCarePage")}>
                 <Image
                   style={[styles.menuIcon, { width: 70, height: 130 }]}
                   source={require("../../../assets/appAssets/menuIcons/2.png")}

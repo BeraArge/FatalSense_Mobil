@@ -10,6 +10,7 @@ import FetalCounter from "./pages/FetalCounter/FetalCounter";
 import UpdatePassword from "./pages/auth/UpdatePassword/UpdatePassword";
 import ForgotPassword from "./pages/auth/ForgotPassword/ForgotPassword";
 import CustomBarChart from "./components/CustomBarChart";
+import BabyCarePage from "./pages/BabyCarePage/BabyCarePage";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 
@@ -31,6 +32,7 @@ export default function Router() {
           <Stack.Screen name="UpdatePassword" component={UpdatePassword} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           <Stack.Screen name="CustomBarChart" component={CustomBarChart} />
+          <Stack.Screen name="BabyCarePage" component={BabyCarePage} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
