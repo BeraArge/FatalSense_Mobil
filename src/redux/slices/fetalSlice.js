@@ -14,7 +14,7 @@ const initialState = {
 export const getFetalInfo = createAsyncThunk(
   "fetalInfo/getFetalInfo",
   async (_, { rejectWithValue }) => {
-    console.log("GET_FETAL_INFO SLICE USER CREDENTIALS: ");
+    //console.log("GET_FETAL_INFO SLICE USER CREDENTIALS: ");
     const token = await AsyncStorage.getItem("userToken");
     const userId = await AsyncStorage.getItem("userId");
 
@@ -43,7 +43,6 @@ export const getFetalInfo = createAsyncThunk(
 export const addFetal = createAsyncThunk(
   "addFetal/addFetal",
   async (_, { rejectWithValue }) => {
-    console.log("GET_FETAL_ADD SLICE USER CREDENTIALS: ");
     const token = await AsyncStorage.getItem("userToken");
     const userId = await AsyncStorage.getItem("userId");
 
@@ -58,7 +57,7 @@ export const addFetal = createAsyncThunk(
       );
 
       const userData = response.data;
-      console.log("GET_FETAL_ADD SLICE RESPONSE: ", userData);
+      //console.log("GET_FETAL_ADD SLICE RESPONSE: ", userData);
 
       return response.data;
     } catch (error) {

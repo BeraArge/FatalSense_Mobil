@@ -3,6 +3,9 @@
     "name": "Fetalsense",
     "slug": "Fetalsense",
     "version": "1.0.0",
+    "extra": {
+      "oneSignalAppId": "a4342088-b00b-4a45-8921-a6049cf92ae4"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,7 +16,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.onesignal.example"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,6 +27,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "onesignal-expo-plugin",
+      {
+        "mode": "development"
+      }
+    ]
   }
 }

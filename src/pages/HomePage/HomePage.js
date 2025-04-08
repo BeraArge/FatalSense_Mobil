@@ -79,7 +79,7 @@ const HomePage = ({ navigation, route }) => {
             </View>
 
             <View style={styles.thirdContainer}>
-              <TouchableOpacity style={styles.menuButton}>
+              <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("PostpartumPage")}>
                 <Image
                   style={[styles.menuIcon, { width: 90, height: 130 }]}
                   source={require("../../../assets/appAssets/menuIcons/3.png")}

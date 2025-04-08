@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const personalForm = createAsyncThunk(
   "personal/personalForm",
   async (personalData, { rejectWithValue }) => {
-    console.log("PERSONAL_FORM SLICE USER CREDENTIALS: ", personalData);
+    //console.log("PERSONAL_FORM SLICE USER CREDENTIALS: ", personalData);
     const token = await AsyncStorage.getItem('userToken');
     
     try {
@@ -17,7 +17,7 @@ export const personalForm = createAsyncThunk(
       });
 
       const userData = response.data;
-      console.log("PERSONAL_FORM SLICE RESPONSE: ", userData);
+      //console.log("PERSONAL_FORM SLICE RESPONSE: ", userData);
 
       return response.data;
     } catch (error) {

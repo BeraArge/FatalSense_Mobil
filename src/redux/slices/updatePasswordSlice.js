@@ -6,10 +6,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const updatePassword = createAsyncThunk(
   "uPassword/updatePassword",
   async (updatePasswordData, { rejectWithValue }) => {
-    console.log("UPDATE_PASSWORD SLICE DATA: ", updatePasswordData);
+    //console.log("UPDATE_PASSWORD SLICE DATA: ", updatePasswordData);
 
     const token = await AsyncStorage.getItem("userToken");
-    console.log("UPDATE PASSWORD USERTOKEN: ", token);
+    //console.log("UPDATE PASSWORD USERTOKEN: ", token);
     try {
       const response = await axios.post(
         API_URLS.UPDATE_PASSWORD,
@@ -22,7 +22,7 @@ export const updatePassword = createAsyncThunk(
       );
 
       const userData = response.data;
-      console.log("UPDATE_PASSWORD SLICE RESPONSE: ", userData);
+      //console.log("UPDATE_PASSWORD SLICE RESPONSE: ", userData);
 
       return response.data;
     } catch (error) {

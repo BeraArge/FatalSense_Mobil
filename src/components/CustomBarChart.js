@@ -9,7 +9,7 @@ const MyBarChart = () => {
   const [isLandscape, setIsLandscape] = useState(false);
   const { width, height } = Dimensions.get("window");
 
-  console.log("fetalAddedData", fetalInfoData?.data?.fetalDetails , loading);
+  //console.log("fetalAddedData", fetalInfoData?.data?.fetalDetails , loading);
 
   const chartData = fetalInfoData?.data?.fetalDetails.map((item) => [
     {

@@ -5,7 +5,7 @@ import { API_URLS } from "../../services/apiService";
 export const forgotPassword = createAsyncThunk(
   "forgot/forgotPassword",
   async (forgotPasswordData, { rejectWithValue }) => {
-    console.log("FORGOT_PASSWORD SLICE USER CREDENTIALS: ", forgotPasswordData);
+    //console.log("FORGOT_PASSWORD SLICE USER CREDENTIALS: ", forgotPasswordData);
     try {
       const response = await axios.post(
         API_URLS.FORGOT_PASSWORD,
@@ -13,7 +13,7 @@ export const forgotPassword = createAsyncThunk(
       );
 
       const userData = response.data;
-      console.log("FORGOT_PASSWORD SLICE RESPONSE: ", userData);
+      //console.log("FORGOT_PASSWORD SLICE RESPONSE: ", userData);
       return response.data;
     } catch (error) {
       console.log("FORGOT_PASSWORD SLICE ERROR: ", error.message);

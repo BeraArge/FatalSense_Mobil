@@ -34,7 +34,7 @@ const BabyCarePage = () => {
   ];
 
   const handleSelectWeek = (week) => {
-    console.log("BABYCAREDATA Seçilen Başlık:", week);
+    //console.log("BABYCAREDATA Seçilen Başlık:", week);
     setSelectedWeek(week);
     setModalVisible(true); // Modal'ı açmak için
   };
@@ -189,10 +189,6 @@ const BabyCarePage = () => {
                         contentContainerStyle={{ flexGrow: 1 }}
                         ListFooterComponent={<View style={{ height: 200 }} />}
                         renderItem={({ item }) => (
-                          console.log(
-                            "---------------------------->",
-                            item.description
-                          ),
                           (
                             <View style={styles.section}>
                               {item.description ? (

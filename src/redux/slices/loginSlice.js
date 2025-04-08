@@ -6,17 +6,17 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const login = createAsyncThunk(
   "auth/login",
   async (userCredentials, { rejectWithValue }) => {
-    console.log("LOGIN SLICE USER CREDENTIALS: ", userCredentials);
+    //console.log("LOGIN SLICE USER CREDENTIALS: ", userCredentials);
     try {
       const response = await axios.post(API_URLS.LOGIN, userCredentials);
 
       const userData = response.data;
-      console.log(
-        "LOGIN SLICE RESPONSE: ",
-        userData?.data?.id,
-        "---:",
-        userData?.data?.accessToken?.token
-      );
+      // console.log(
+      //   "LOGIN SLICE RESPONSE: ",
+      //   userData?.data?.id,
+      //   "---:",
+      //   userData?.data?.accessToken?.token
+      // );
 
       await AsyncStorage.setItem(
         "userId",

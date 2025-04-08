@@ -72,7 +72,6 @@ const PersonalInfoForm = ({ navigation, route }) => {
 
   // verileri gönderme
   const handleSend = async () => {
-    console.log("222222222222222222222---------------------", userId);
     if (
       !nameSurname ||
       !age ||
@@ -97,7 +96,6 @@ const PersonalInfoForm = ({ navigation, route }) => {
       ultrasonPregnancyWeek
     ) {
       try {
-        console.log("personal info form veri gönder---------------------");
         await AsyncStorage.setItem(
           "userUltrasonPregnancyWeek",
           ultrasonPregnancyWeek ? ultrasonPregnancyWeek : ""

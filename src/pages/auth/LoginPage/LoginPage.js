@@ -52,7 +52,7 @@ const LoginPage = ({navigation}) => {
       setShowAlert(true);
     }
     else{
-      console.log("loginnnnnnn giriş yappppp");
+      //console.log("loginnnnnnn giriş yappppp");
       dispatch(
         login({
           userName: mail,
